@@ -1,10 +1,12 @@
 :root {
     --corFundo: lightyellow;
-    --fonteTitulo: "Times New Roman", Times, serif;
-    --corTexto: #333;
+    --fonteTexto: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --corTexto: #222;
     --corLink: #ff9900;
     --corLinkHover: #cc6600;
-    --corRodape: #333;
+    --corRodape: #222;
     --corRodapeTexto: lightyellow;
     --bordaRadius: 15px;
+    --tamanhoTitulo: 24px;
+    
 }

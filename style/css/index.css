@@ -1,0 +1,28 @@
+.menu ul {
+    list-style: none;
+    display: flex;
+    gap: 5px;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    margin: 0;
+}
+
+a {
+    color: var(--corLink);
+    font-family: var(--fonteTexto);
+    font-size: 18px;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: var(--corLinkHover);
+    font-weight: bold;
+}
+
+.principal {
+    padding: 20px 15px;
+    font-family: var(--fonteTexto);
+}

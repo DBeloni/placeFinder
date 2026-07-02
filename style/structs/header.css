@@ -1,0 +1,23 @@
+site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: block;
+}
+
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--corFundo);
+    padding: 32px 16px;
+}
+
+.logo {
+    font-family: var(--fonteTexto);
+    font-size: var(--fonteTexto);
+    font-size: 24px;
+    color: var(--corTexto);
+    font-weight: bold;
+    padding: 0px 10px;
+}
