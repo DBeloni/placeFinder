@@ -1,0 +1,10 @@
+:root {
+    --corFundo: lightyellow;
+    --fonteTitulo: "Times New Roman", Times, serif;
+    --corTexto: #333;
+    --corLink: #ff9900;
+    --corLinkHover: #cc6600;
+    --corRodape: #333;
+    --corRodapeTexto: lightyellow;
+    --bordaRadius: 15px;
+}
