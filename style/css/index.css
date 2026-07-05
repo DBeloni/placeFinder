@@ -1,0 +1,64 @@
+.principal {
+    padding: 20px 15px;
+    font-family: var(--fonteTexto);
+}
+
+.cabecalho-principal {
+    background-color: var(--color1); /* Fundo escuro do seu padrão */
+    font-family: var(--fonteTexto);
+    border-color: var(--color2) !important;
+}
+
+/* Estilo do Logo */
+.logo-site {
+    color: var(--corFundo); /* #f1f6ce */
+    font-size: var(--tamanhoTitulo);
+    font-weight: bold;
+}
+.logo-site:hover {
+    color: var(--corLinkHover);
+}
+
+/* Links do Menu */
+.lista-navegacao .nav-link {
+    color: var(--corLink); /* Cor padrão dos links */
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.lista-navegacao .nav-link:hover {
+    color: var(--corLinkHover) !important;
+}
+
+/* Link ativo (Página atual) */
+.lista-navegacao .nav-link.active {
+    color: var(--corFundo) !important; /* Destaque para a página atual */
+}
+
+/* Botão de Login (Estilo Outline) */
+.bloco-botoes .btn-login {
+    color: var(--corFundo);
+    border: 2px solid var(--color2);
+    border-radius: var(--bordaRadius);
+    transition: all 0.2s ease;
+}
+.bloco-botoes .btn-login:hover {
+    background-color: var(--color2);
+    color: var(--corFundo);
+}
+
+/* Botão de Sign-up (Preenchido) */
+.bloco-botoes .btn-signup {
+    background-color: var(--color3); /* Azul claro/piscina do seu padrão */
+    color: var(--color1); /* Texto escuro para contraste */
+    font-weight: bold;
+    border-radius: var(--bordaRadius);
+    border: none;
+    transition: transform 0.2s ease;
+}
+.bloco-botoes .btn-signup:hover {
+    transform: scale(1.05);
+    background-color: var(--color4);
+    color: var(--color1);
+}
+
