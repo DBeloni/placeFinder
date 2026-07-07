@@ -1,18 +1,23 @@
 body {
     margin: 0;
-    display: grid;
-
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr auto;
-
-    grid-template-areas:
-        "cabecalho"
-        "principal"
-        "rodape";
-
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
+    background-color: var(--corFundo);
 }
 
-site-header { grid-area: cabecalho; display: block;}
-site-footer { grid-area: rodape; display: block;}
-main { grid-area: principal; }
+site-header {
+    display: block;
+    width: 100%;
+}
+
+site-footer {
+    display: block;
+    width: 100%;
+    margin-top: auto;
+}
+
+main {
+    flex: 1 0 auto;
+}
+

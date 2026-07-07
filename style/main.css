@@ -4,7 +4,10 @@
 @import url('css/index.css');
 @import url('css/map.css');
 @import url('css/about.css');
-@import url('css/signIn.css');
+@import url('css/register.css');
+@import url('css/login.css');
 
 @import url('css/components/footer.css');
 @import url('css/components/header.css');
+
+@import url('general.css');

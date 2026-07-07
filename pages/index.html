@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,35 +9,37 @@
     <script src="/script/components/site-header.js" defer></script>
     <script src="/script/components/site-footer.js" defer></script>
 </head>
-
 <body>
+
     <site-header></site-header>
 
-    <main class="principal">
+    <main class="principal flex-grow-1">
         <section class="hero container my-5 py-5">
-            <div class="row align-items-center g-5">
+            <div class="row align-items-center g-5 text-start">
+                
                 <div class="col-12 col-lg-6">
-                    <h1 class="display-5 fw-bold lh-1 mb-3">Find the perfect places around you</h1>
-                    <p class="lead mb-4">Quickly discover gyms, supermarkets, gas stations, and more using your zip
-                        code.</p>
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                        <a href="login.html" class="btn btn-login px-4 me-md-2 fw-bold">Login</a>
-                        <a href="signIn.html" class="btn btn-signup px-4">Sign In</a>
+                    <h1 class="display-4 fw-bold lh-1 mb-3 text-dark">Find the perfect places around you</h1>
+                    <p class="lead text-secondary mb-4">Quickly discover gyms, supermarkets, gas stations, and more using your zip code.</p>
+                    
+                    <div class="d-flex gap-3 justify-content-start mt-4 bloco-botoes">
+                        <a href="login.html" class="btn btn-custom-login px-4 py-2 fw-bold text-center">Login</a>
+                        <a href="register.html" class="btn btn-custom-signup px-4 py-2 fw-bold text-center">Register</a>
                     </div>
                 </div>
+                
                 <div class="col-12 col-lg-6">
-                    <div style="width: 100%; height: 350px; background-color: var(--color5); border: 3px dashed var(--color2); border-radius: var(--bordaRadius);"
-                        class="d-flex align-items-center justify-content-center">
-                        <span style="color: var(--color2); font-weight: bold; opacity: 0.6;">[ Application Preview Image
-                            ]</span>
+                    <div class="preview-mockup p-3 shadow-sm rounded d-flex justify-content-center align-items-center">
+                        <img class="imgMapa img-fluid" src="/assets/imgMapa3d.png" alt="imagem de um planeta com uma seta de localização">
                     </div>
                 </div>
+
             </div>
         </section>
-        <section class="sobre"></section>
+        
+        <section class="sobre container my-5"></section>
     </main>
 
     <site-footer></site-footer>
-</body>
 
+</body>
 </html>

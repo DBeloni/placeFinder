@@ -19,12 +19,17 @@
     transition: color 0.2s ease;
 }
 
-.lista-navegacao .nav-link:hover {
-    color: var(--corLinkHover) !important;
+.lista-navegacao .nav-link,
+site-header .nav-link {
+    color: var(--corFundo) !important; 
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
 }
 
-.lista-navegacao .nav-link.active {
-    color: var(--corFundo) !important;
+.lista-navegacao .nav-link:hover,
+site-header .nav-link:hover {
+    color: var(--corLinkHover) !important;
+    opacity: 1;
 }
 
 .bloco-botoes .btn-login {

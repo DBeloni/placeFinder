@@ -4,24 +4,28 @@
 }
 
 .cabecalho-principal {
-    background-color: var(--color1); /* Fundo escuro do seu padrão */
+    background-color: var(--color1);
+    /* Fundo escuro do seu padrão */
     font-family: var(--fonteTexto);
     border-color: var(--color2) !important;
 }
 
 /* Estilo do Logo */
 .logo-site {
-    color: var(--corFundo); /* #f1f6ce */
+    color: var(--corFundo);
+    /* #f1f6ce */
     font-size: var(--tamanhoTitulo);
     font-weight: bold;
 }
+
 .logo-site:hover {
     color: var(--corLinkHover);
 }
 
 /* Links do Menu */
 .lista-navegacao .nav-link {
-    color: var(--corLink); /* Cor padrão dos links */
+    color: var(--corLink);
+    /* Cor padrão dos links */
     font-weight: 500;
     transition: color 0.2s ease;
 }
@@ -32,7 +36,8 @@
 
 /* Link ativo (Página atual) */
 .lista-navegacao .nav-link.active {
-    color: var(--corFundo) !important; /* Destaque para a página atual */
+    color: var(--corFundo) !important;
+    /* Destaque para a página atual */
 }
 
 /* Botão de Login (Estilo Outline) */
@@ -42,6 +47,7 @@
     border-radius: var(--bordaRadius);
     transition: all 0.2s ease;
 }
+
 .bloco-botoes .btn-login:hover {
     background-color: var(--color2);
     color: var(--corFundo);
@@ -49,16 +55,89 @@
 
 /* Botão de Sign-up (Preenchido) */
 .bloco-botoes .btn-signup {
-    background-color: var(--color3); /* Azul claro/piscina do seu padrão */
-    color: var(--color1); /* Texto escuro para contraste */
+    background-color: var(--color3);
+    /* Azul claro/piscina do seu padrão */
+    color: var(--color1);
+    /* Texto escuro para contraste */
     font-weight: bold;
     border-radius: var(--bordaRadius);
     border: none;
     transition: transform 0.2s ease;
 }
+
 .bloco-botoes .btn-signup:hover {
     transform: scale(1.05);
     background-color: var(--color4);
     color: var(--color1);
 }
 
+.principal {
+    padding: 20px 15px;
+    font-family: var(--fonteTexto);
+    background-color: var(--corFundo);
+}
+
+/* Título e Texto do Hero */
+.hero h1 {
+    color: var(--color1) !important;
+}
+
+.hero p {
+    color: var(--color2) !important;
+}
+
+/* Caixa de Preview da Imagem (Mockup) */
+.preview-mockup {
+    background-color: var(--color1);
+    border-radius: var(--bordaRadius);
+    padding: 15px;
+}
+
+.preview-placeholder {
+    width: 100%;
+    height: 350px;
+    background-color: var(--color2);
+    border: 2px dashed var(--color3);
+    border-radius: calc(var(--bordaRadius) - 5px);
+}
+
+.preview-placeholder span {
+    color: var(--color4);
+}
+
+/* Botão de Login (Cor Principal Preenchida) */
+.btn-custom-login {
+    background-color: var(--color3) !important;
+    color: var(--corFundo) !important;
+    border: 2px solid var(--color3) !important;
+    border-radius: var(--bordaRadius) !important;
+    transition: all 0.3s ease;
+}
+
+.btn-custom-login:hover {
+    background-color: var(--color1) !important;
+    border-color: var(--color1) !important;
+    color: #ffffff !important;
+}
+
+/* Botão de Sign Up (Estilo Outline com texto na cor da borda por padrão) */
+.btn-custom-signup {
+    background-color: transparent !important;
+    color: var(--color3) !important;
+    border: 2px solid var(--color3) !important;
+    border-radius: var(--bordaRadius) !important;
+    transition: all 0.3s ease;
+}
+
+/* Quando passa o mouse por cima (Inverte as cores) */
+.btn-custom-signup:hover {
+    background-color: var(--color3) !important;
+    color: var(--corFundo) !important;
+}
+
+.imgMapa {
+    width: 100%;
+    height: auto;
+    max-height: 380px;
+    object-fit: contain; 
+}

@@ -35,12 +35,25 @@ export async function buscarServicosAoRedor(coordenadas, categoriaHtml, raioKm) 
     const raioMetros = parseFloat(raioKm) * 1000;
     const { lat, lon } = coordenadas;
 
-    const query = `[out:json];node(around:${raioMetros},${lat},${lon})[amenity=${amenity}];out;`;
-    const url = `https://overpass-api.de/api/interpreter?data=${encodeURIComponent(query)}`;
+    const query = `[out:json][timeout:25];node(around:${raioMetros},${lat},${lon})["amenity"="${amenity}"];out;`;
 
     try {
-        const resposta = await fetch(url);
-        const dados = await resposta.json();
+        const resposta = await fetch('https://overpass-api.de/api/interpreter', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `data=${encodeURIComponent(query)}`
+        });
+
+        const textoResposta = await resposta.text();
+
+        let dados;
+        try {
+            dados = JSON.parse(textoResposta);
+        } catch (e) {
+            throw new Error("A API do mapa está sobrecarregada no momento. Tente novamente em alguns segundos.");
+        }
 
         if (!dados.elements || dados.elements.length === 0) {
             return [];
@@ -54,6 +67,6 @@ export async function buscarServicosAoRedor(coordenadas, categoriaHtml, raioKm) 
         }));
 
     } catch (erro) {
-        throw new Error("Falha ao consultar os serviços ao redor: " + erro.message);
+        throw new Error("Falha ao consultar os serviços: " + erro.message);
     }
 }

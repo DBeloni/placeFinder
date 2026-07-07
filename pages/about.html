@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contate-nos</title>
+    <title>Contact Us</title>
 
     <link rel="stylesheet" href="/style/main.css">
     <script src="/script/components/site-header.js" defer></script>
@@ -13,56 +13,62 @@
 
 <body>
     <site-header></site-header>
-    <main class="principal">
-        <h1>Contate-nos</h1>
-        <h3>Fale conosco</h3>
-        <p>Se você tiver dúvidas, sugestões, críticas ou precisar de suporte, entre em contato. Será um prazer receber
-            sua mensagem e responder o mais breve possível.</p>
-        <h4>Informações de contato</h4>
-        <ul>
-            <li>Nome: Davi Rosa Beloni Pinheiro</li>
-            <li>E-mail: <a href="mailto:davi.beloni.pinheiro@gmail.com">davi.beloni.pinheiro@gmail.com</a></li>
-            <li>GitHub: <a href="https://github.com/DBeloni">https://github.com/DBeloni</a></li>
-            <li>LinkedIn: <a href="https://linkedin.com/in/davipinheiro0">https://linkedin.com/in/davipinheiro0</a></li>
-        </ul>
-        <p>Caso prefira, você também pode utilizar o formulário abaixo para enviar sua mensagem diretamente pelo site.
-        </p>
+    <main class="principal contact-page">
+        <div class="contact-container">
 
-        <h3>Envie uma mensagem</h3>
+            <section class="contact-info">
+                <h1 class="contact-title">Contact Us</h1>
+                <h2 class="contact-subtitle">Get in touch</h2>
+                <p class="contact-description">If you have any questions, suggestions, feedback, or need support, please
+                    contact us. It will be a pleasure to receive your message and we will respond as soon as possible.
+                </p>
 
-        <p>Preencha os campos abaixo e envie sua solicitação. Sua mensagem será analisada e respondida assim que
-            possível.</p>
+                <div class="info-card">
+                    <h4>Contact Information</h4>
+                    <ul>
+                        <li><strong>Name:</strong> Davi Rosa Beloni Pinheiro</li>
+                        <li><strong>E-mail:</strong> <a
+                                href="mailto:davi.beloni.pinheiro@gmail.com">davi.beloni.pinheiro@gmail.com</a></li>
+                        <li><strong>GitHub:</strong> <a href="https://github.com/DBeloni"
+                                target="_blank">github.com/DBeloni</a></li>
+                        <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/davipinheiro0"
+                                target="_blank">linkedin.com/in/davipinheiro0</a></li>
+                    </ul>
+                </div>
+            </section>
 
-        <form id="mensagem">
+            <section class="contact-form-wrapper">
+                <h3>Send a Message</h3>
+                <p class="form-instruction">Fill out the fields below and send your request.</p>
 
-            <label for="nome">Nome:<br>
-                <input type="text" name="nome" id="nome" placeholder="Informe seu nome completo" required>
-            </label>
+                <form id="mensagem">
+                    <div class="input-group-custom">
+                        <label for="nome">Name</label>
+                        <input type="text" name="nome" id="nome" placeholder="Enter your full name" required>
+                    </div>
 
-            <label for="email">
-                Digite um endereço de e-mail válido:<br>
-                <input type="email" name="email" id="email" placeholder="Seu melhor email" required>
-            </label>
+                    <div class="input-group-custom">
+                        <label for="email">Email Address</label>
+                        <input type="email" name="email" id="email" placeholder="Your best email" required>
+                    </div>
 
-            <label for="assunto">
-                Assunto:<br>
-                <input type="text" name="assunto" id="assunto"
-                    placeholder="Escreva um breve resumo do motivo do contato." required>
-            </label>
+                    <div class="input-group-custom">
+                        <label for="assunto">Subject</label>
+                        <input type="text" name="assunto" id="assunto" placeholder="Reason for contact" required>
+                    </div>
 
-            <label for="comentario">
-                Mensagem:<br>
-            </label>
-            <textarea id="comentario" name="comentario" rows="5" cols="40"
-                placeholder="Descreva sua dúvida, sugestão, comentário ou solicitação com o maior número possível de detalhes."
-                required></textarea>
+                    <div class="input-group-custom">
+                        <label for="comentario">Message</label>
+                        <textarea id="comentario" name="comentario" rows="5"
+                            placeholder="Describe your question, suggestion, or request with detail..."
+                            required></textarea>
+                    </div>
 
-            <br>
+                    <button type="submit" id="msg">Send Message</button>
+                </form>
+            </section>
 
-            <button type="submit" id="msg">Enviar Dados</button>
-        </form>
-
-
+        </div>
     </main>
     <site-footer></site-footer>
 </body>
