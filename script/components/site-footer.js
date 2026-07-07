@@ -1,27 +1,28 @@
 class SiteFooter extends HTMLElement {
     connectedCallback() {
-        // Verifica se está na página restrita do mapa
-        const estaNaPaginaDoMapa = window.location.pathname.includes('map.html');
-        const estaLogado = this.hasAttribute('logado') || estaNaPaginaDoMapa;
+        // Mesma regra de segurança unificada
+        const estaLogado = localStorage.getItem("usuarioLogado") === "true";
 
-        this.innerHTML = `        
-            <link rel="stylesheet" href="/style/css/components/footer.css">
-            <div class="rodapeGeral">
-                <div class="container">
-                    <footer class="py-3 my-0">
-                        ${estaLogado ? '' : `
-                            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                                <li class="nav-item"><a href="/pages/index.html" class="nav-link px-2">Home</a></li>
-                                <li class="nav-item"><a href="/pages/about.html" class="nav-link px-2">About</a></li>                            
-                                <li class="nav-item"><a href="/pages/register.html" class="nav-link px-2">Register</a></li>
-                                <li class="nav-item"><a href="/pages/login.html" class="nav-link px-2">Login</a></li>
-                            </ul>
-                        `}
-                        <p class="text-center mb-0" style="color: var(--color2); font-size: 13px;">&copy; 2026 PlaceFinder, Inc</p>
-                    </footer>
-                </div>        
-            </div>`;
+        this.innerHTML = `
+        <link rel="stylesheet" href="../style/css/components/footer.css">
+        <footer class="rodapeGeral py-4">
+            <div class="container text-center">
+                <ul class="nav justify-content-center mb-3 lista-links-footer">
+                    <li><a href="index.html" class="nav-link px-3">Home</a></li>
+                    <li><a href="about.html" class="nav-link px-3">About</a></li>
+                    
+                    ${estaLogado ? `<li><a href="map.html" class="nav-link px-3">Map</a></li>` : ''}
+                    
+                    ${!estaLogado ? `
+                        <li><a href="register.html" class="nav-link px-3">Register</a></li>
+                        <li><a href="login.html" class="nav-link px-3">Login</a></li>
+                    ` : ''}
+                </ul>
+                <p class="mb-0">© 2026 PlaceFinder, Inc</p>
+            </div>
+        </footer>
+        `;
     }
 }
 
-customElements.define('site-footer', SiteFooter);
+customElements.define("site-footer", SiteFooter);

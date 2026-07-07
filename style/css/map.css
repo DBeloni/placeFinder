@@ -83,22 +83,29 @@ body {
     background-color: #ffffff !important;
 }
 
+/* --- Ressuscitando o Botão Buscar com a Identidade Visual do Site --- */
 #btn-buscar {
-    padding: 12px 35px !important;
-    background-color: var(--color1) !important;
-    color: var(--corFundo) !important;
+    background-color: var(--color1) !important; 
+    color: var(--corFundo) !important; 
     border: none !important;
-    border-radius: var(--bordaRadius) !important;
+    padding: 12px 35px !important;
+    font-family: var(--fonteTexto) !important;
     font-weight: 700 !important;
     font-size: 0.95rem !important;
+    border-radius: var(--bordaRadius) !important;
     cursor: pointer !important;
-    transition: all 0.2s ease !important;
-    height: 43px;
+    height: 43px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.2s ease-in-out !important;
 }
 
+/* Efeito Hover Suave */
 #btn-buscar:hover {
-    background-color: var(--color3) !important;
+    background-color: var(--color3) !important; 
     color: var(--color1) !important;
+    box-shadow: 0px 4px 15px rgba(105, 210, 205, 0.3) !important; 
 }
 
 
@@ -160,6 +167,28 @@ body {
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06) !important; 
     border: 1px solid rgba(0, 0, 0, 0.05) !important;
     z-index: 1;
+}
+
+/* Estilo do botão de Logout integrado com a identidade do PlaceFinder */
+#btn-logout {
+    font-family: var(--fonteTexto);
+    background-color: transparent !important;
+    color: var(--color5) !important;
+    border: 2px solid var(--color5) !important;
+    padding: 6px 18px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    border-radius: var(--bordaRadius) !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease-in-out !important;
+}
+
+/* Efeito Hover: Inverte as cores quando passa o mouse por cima */
+#btn-logout:hover {
+    background-color: var(--color5) !important;
+    color: var(--color1) !important;
+    border-color: var(--color5) !important;
+    box-shadow: 0px 4px 12px rgba(241, 246, 206, 0.2) !important;
 }
 
 /* Configuração Responsiva para Celulares */
