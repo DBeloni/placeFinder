@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const resultado = await cadastrarUsuario(email, senha);
 
             if (resultado.sucesso) {
+                localStorage.setItem("usuarioLogado", "true");
                 window.location.href = "/pages/map.html";
             } else {
                 alert(resultado.erro);

@@ -1,23 +1,31 @@
-import { logarUsuario } from "/script/services/auth-service.js";
+import { logarUsuario } from "./services/auth-service.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Procura o formulário da tela de login
-    const formLogin = document.getElementById("form-login");
+    const formLogin = document.getElementById("login-form");
 
     if (formLogin) {
         formLogin.addEventListener("submit", async (event) => {
             event.preventDefault();
 
-            // Pega os dados digitados na tela de login
-            const email = document.getElementById("login-email").value.trim();
-            const senha = document.getElementById("login-senha").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const senha = document.getElementById("senha").value.trim();
+
+            // Desabilita o botão temporariamente para evitar duplo clique ávido
+            const btnSubmit = formLogin.querySelector("button[type='submit']");
+            if (btnSubmit) btnSubmit.disabled = true;
 
             const resultado = await logarUsuario(email, senha);
 
             if (resultado.sucesso) {
-                window.location.href = "/pages/map.html";
+                // Seta a Única Fonte de Verdade que o Header, Footer e Mapa usam para segurança
+                localStorage.setItem("usuarioLogado", "true");
+                
+                // Manda direto para a tela do mapa (estão na mesma pasta /pages/)
+                window.location.href = "map.html";
             } else {
+                // Mostra o erro tratado em português
                 alert(resultado.erro);
+                if (btnSubmit) btnSubmit.disabled = false;
             }
         });
     }
