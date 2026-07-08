@@ -1,0 +1,58 @@
+.cabecalho-principal {
+    background-color: var(--color1);
+    font-family: var(--fonteTexto);
+    border-color: var(--color2) !important;
+}
+
+.logo-site {
+    color: var(--corFundo);
+    font-size: var(--tamanhoTitulo);
+    font-weight: bold;
+}
+.logo-site:hover {
+    color: var(--corLinkHover);
+}
+
+.lista-navegacao .nav-link {
+    color: var(--corLink);
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.lista-navegacao .nav-link,
+site-header .nav-link {
+    color: var(--corFundo) !important; 
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
+}
+
+.lista-navegacao .nav-link:hover,
+site-header .nav-link:hover {
+    color: var(--corLinkHover) !important;
+    opacity: 1;
+}
+
+.bloco-botoes .btn-login {
+    color: var(--corFundo);
+    border: 2px solid var(--color2);
+    border-radius: var(--bordaRadius);
+    transition: all 0.2s ease;
+}
+.bloco-botoes .btn-login:hover {
+    background-color: var(--color2);
+    color: var(--corFundo);
+}
+
+.bloco-botoes .btn-signup {
+    background-color: var(--color3);
+    color: var(--color1);
+    font-weight: bold;
+    border-radius: var(--bordaRadius);
+    border: none;
+    transition: transform 0.2s ease;
+}
+.bloco-botoes .btn-signup:hover {
+    transform: scale(1.05);
+    background-color: var(--color4);
+    color: var(--color1);
+}

@@ -1,12 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap');
+
 :root {
-    --corFundo: lightyellow;
-    --fonteTexto: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --corTexto: #222;
-    --corLink: #ff9900;
-    --corLinkHover: #cc6600;
-    --corRodape: #222;
-    --corRodapeTexto: lightyellow;
+    --corFundo: var(--color5);
+    --fonteTexto: "Google Sans Flex", sans-serif;
+    --corTexto: var(--color1);
+    --corLink: var(--color2);
+    --corLinkHover: var(--color3);
+    --corRodape: var(--color1);
+    --corRodapeTexto: var(--corFundo);
     --bordaRadius: 15px;
     --tamanhoTitulo: 24px;
-    
+
+    --color1: #0d0f36;
+    --color2: #294380;
+    --color3: #69d2cd;
+    --color4: #b9f1d6;
+    --color5: #f1f6ce;
+
 }
+
+/* FONT:
+// <weight>: Use a value from 1 to 1000
+// <uniquifier>: Use a unique and descriptive class name
+
+.google-sans-flex-<uniquifier> {
+  font-family: "Google Sans Flex", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0,
+    "wdth" 100,
+    "GRAD" 0,
+    "ROND" 0;
+}
+*/

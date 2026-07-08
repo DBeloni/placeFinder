@@ -1,0 +1,135 @@
+
+body:has(.login-page-clean) {
+    background-color: var(--corFundo) !important;
+    height: 100vh;
+    height: 100dvh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+body:has(.login-page-clean)::-webkit-scrollbar {
+    width: 6px;
+}
+
+body:has(.login-page-clean)::-webkit-scrollbar-track {
+    background: var(--corFundo);
+}
+
+body:has(.login-page-clean)::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+}
+
+main.login-page-clean {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: var(--corFundo) !important;
+}
+
+main.login-page-clean #login-form {
+    background-color: rgba(0, 0, 0, 0.02) !important;
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+    border-radius: var(--bordaRadius) !important;
+    padding: 40px 35px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02) !important;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ajustes de Tipografia */
+main.login-page-clean .auth-title {
+    color: var(--color1) !important;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+main.login-page-clean .auth-subtitle {
+    color: var(--color1) !important;
+    opacity: 0.6 !important;
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+}
+
+main.login-page-clean .input-group-custom label {
+    color: var(--color1) !important;
+    font-size: 0.85rem;
+    font-weight: 500;
+    opacity: 0.8 !important;
+    margin-bottom: 4px;
+}
+
+main.login-page-clean .input-group-custom input {
+    width: 100%;
+    padding: 12px 14px !important;
+    background-color: rgba(0, 0, 0, 0.03) !important;
+    border: 1px solid rgba(0, 0, 0, 0.12) !important;
+    border-radius: var(--bordaRadius) !important;
+    color: var(--color1) !important;
+    font-family: var(--fonteTexto);
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+main.login-page-clean .input-group-custom input:focus {
+    outline: none;
+    border-color: var(--color3) !important;
+    background-color: rgba(0, 0, 0, 0.01) !important;
+}
+
+/* Botão Principal */
+main.login-page-clean #cdst {
+    width: 100%;
+    padding: 14px 0 !important;
+    margin-top: 10px;
+    background-color: var(--color1) !important;
+    color: var(--corFundo) !important;
+    border: none !important;
+    border-radius: var(--bordaRadius) !important;
+    font-weight: 700;
+    font-family: var(--fonteTexto);
+    font-size: 1rem;
+    transition: all 0.2s ease !important;
+}
+
+main.login-page-clean #cdst:hover {
+    background-color: var(--color3) !important;
+    color: var(--color1) !important;
+    cursor: pointer;
+    transform: translateY(-1px);
+}
+
+.auth-header:has(~ .login-page-clean),
+.login-page-clean ~ .auth-header {
+    padding: 20px 40px;
+    background: transparent;
+}
+
+.auth-header:has(~ .login-page-clean) .auth-logo,
+.login-page-clean ~ .auth-header .auth-logo {
+    color: var(--color1) !important;
+    font-family: var(--fonteTexto);
+    font-size: 1.8rem;
+    font-weight: 800;
+    text-decoration: none !important;
+    letter-spacing: -0.5px;
+}
+
+.login-page-clean ~ .auth-footer {
+    padding: 15px 20px;
+    text-align: center;
+}
+
+.auth-footer:has(~ .login-page-clean) p,
+.login-page-clean ~ .auth-footer p {
+    color: var(--color1) !important;
+    opacity: 0.4 !important;
+    margin: 0;
+    font-size: 0.8rem;
+}
