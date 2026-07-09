@@ -17,6 +17,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
+            const btnSubmit = formCadastro.querySelector("button[type='submit']");
+            if (btnSubmit) btnSubmit.disabled = true;
+
             const resultado = await cadastrarUsuario(email, senha);
 
             if (resultado.sucesso) {
@@ -24,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 window.location.href = "/pages/map.html";
             } else {
                 mostrarNotificacao(getTexto(resultado.erroKey), "error");
+                if (btnSubmit) btnSubmit.disabled = false;
             }
         });
     }

@@ -1,5 +1,5 @@
-import { logarUsuario } from "./services/auth-service.js";
-import { mostrarNotificacao, getTexto } from "./utils/i18n.js";
+import { logarUsuario } from "/script/services/auth-service.js";
+import { mostrarNotificacao, getTexto } from "/script/utils/i18n.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     const formLogin = document.getElementById("login-form");
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (resultado.sucesso) {
                 localStorage.setItem("usuarioLogado", "true");
-                window.location.href = "map.html";
+                window.location.href = "/pages/map.html";
             } else {
                 mostrarNotificacao(getTexto(resultado.erroKey), "error");
                 if (btnSubmit) btnSubmit.disabled = false;
