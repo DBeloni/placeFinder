@@ -1,4 +1,5 @@
 import { cadastrarUsuario } from "/script/services/auth-service.js";
+import { mostrarNotificacao, getTexto } from "/script/utils/i18n.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     const formCadastro = document.getElementById("cadastro");
@@ -12,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const confirmarSenha = document.getElementById("confirmar-senha").value.trim();
 
             if (senha !== confirmarSenha) {
-                alert("As senhas não coincidem!");
+                mostrarNotificacao(getTexto("error_passwords_dont_match"), "error");
                 return;
             }
 
@@ -22,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 localStorage.setItem("usuarioLogado", "true");
                 window.location.href = "/pages/map.html";
             } else {
-                alert(resultado.erro);
+                mostrarNotificacao(getTexto(resultado.erroKey), "error");
             }
         });
     }

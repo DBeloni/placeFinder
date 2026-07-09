@@ -1,10 +1,4 @@
-import { 
-    getAuth, 
-    createUserWithEmailAndPassword, 
-    signInWithEmailAndPassword,
-    signOut
-} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 
 const firebaseConfig = {
@@ -20,49 +14,39 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// --- FUNÇÃO DE CADASTRO ---
 export async function cadastrarUsuario(email, senha) {
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
         return { sucesso: true, usuario: userCredential.user };
     } catch (error) {
-        let mensagemErro = "Ocorreu um erro ao cadastrar.";
-        if (error.code === "auth/email-already-in-use") {
-            mensagemErro = "Este e-mail já está cadastrado no sistema! Tente fazer o login.";
-        } else if (error.code === "auth/weak-password") {
-            mensagemErro = "A senha deve ter pelo menos 6 caracteres.";
-        } else if (error.code === "auth/invalid-email") {
-            mensagemErro = "O formato do e-mail digitado é inválido.";
-        }
-        return { sucesso: false, erro: mensagemErro };
+        let chaveErro = "error_generic";
+        if (error.code === "auth/email-already-in-use") chaveErro = "error_email_in_use";
+        else if (error.code === "auth/weak-password") chaveErro = "error_weak_password";
+        else if (error.code === "auth/invalid-email") chaveErro = "error_invalid_email";
+        return { sucesso: false, erroKey: chaveErro };
     }
 }
 
-// --- FUNÇÃO DE LOGIN (NOVA) ---
 export async function logarUsuario(email, senha) {
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, senha);
         return { sucesso: true, usuario: userCredential.user };
     } catch (error) {
-        let mensagemErro = "E-mail ou senha incorretos.";
-        
-        // Trata os códigos de erro do Firebase para o usuário não ver inglês feio
+        let chaveErro = "error_generic";
         if (error.code === "auth/user-not-found" || error.code === "auth/wrong-password" || error.code === "auth/invalid-credential") {
-            mensagemErro = "Usuário não encontrado ou senha inválida. Verifique os dados.";
+            chaveErro = "error_user_not_found";
         } else if (error.code === "auth/invalid-email") {
-            mensagemErro = "O formato do e-mail digitado é inválido.";
+            chaveErro = "error_invalid_email";
         }
-        
-        return { sucesso: false, erro: mensagemErro };
+        return { sucesso: false, erroKey: chaveErro };
     }
 }
 
-// --- FUNÇÃO DE LOGOUT ---
 export async function deslogarUsuario() {
     try {
         await signOut(auth);
         return { sucesso: true };
     } catch (error) {
-        return { sucesso: false, erro: "Erro ao tentar sair do sistema." };
+        return { sucesso: false, erroKey: "error_generic" };
     }
 }
