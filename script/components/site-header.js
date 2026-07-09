@@ -66,7 +66,7 @@ class SiteHeader extends HTMLElement {
                 event.preventDefault();
                 localStorage.removeItem("usuarioLogado");
                 mostrarNotificacao(getTexto('logout_success'), 'success');
-                setTimeout(() => { window.location.href = "login.html"; }, 1000);
+                setTimeout(() => { window.location.href = "/pages/login.html"; }, 1000);
             });
         }
     }
