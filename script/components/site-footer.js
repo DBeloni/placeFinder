@@ -8,7 +8,7 @@ class SiteFooter extends HTMLElement {
         <footer class="rodapeGeral py-4">
             <div class="container text-center">
                 <ul class="nav justify-content-center mb-3 lista-links-footer">
-                    <li><a href="index.html" class="nav-link px-3">Home</a></li>
+                    <li><a href="/index.html" class="nav-link px-3">Home</a></li>
                     <li><a href="about.html" class="nav-link px-3">About</a></li>
                     
                     ${estaLogado ? `<li><a href="map.html" class="nav-link px-3">Map</a></li>` : ''}

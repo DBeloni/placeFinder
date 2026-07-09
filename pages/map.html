@@ -3,22 +3,22 @@
 
 <head>
     <script>
-    function verificarSegurancaRota() {
-        if (localStorage.getItem("usuarioLogado") !== "true") {
-            alert("Acesso negado! Por favor, faça login primeiro.");
-            window.location.href = "login.html";
+        function verificarSegurancaRota() {
+            if (localStorage.getItem("usuarioLogado") !== "true") {
+                alert("Acesso negado! Por favor, faça login primeiro.");
+                window.location.href = "login.html";
+            }
         }
-    }
-    
-    verificarSegurancaRota();
 
-    window.addEventListener('pageshow', function(event) {
-        if (event.persisted) {
-            verificarSegurancaRota();
-        }
-    });
-</script>
-    
+        verificarSegurancaRota();
+
+        window.addEventListener('pageshow', function (event) {
+            if (event.persisted) {
+                verificarSegurancaRota();
+            }
+        });
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PlaceFinder</title>
@@ -29,64 +29,66 @@
 
     <link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
 
+    <script type="module">
+        import { aplicarTraducao } from '/script/utils/i18n.js';
+        aplicarTraducao();
+    </script>
+
     <script src="/script/components/site-header.js" defer></script>
     <script src="/script/components/site-footer.js" defer></script>
     <script src="/script/components/card-local.js" defer></script>
-    
+
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 
     <script src="/script/cep.js" type="module"></script>
     <script type="module" src="/script/map-main.js"></script>
-    <script type="module" src="/script/auth-map.js"></script> </head>
+    <script type="module" src="/script/auth-map.js"></script>
+</head>
 
 <body>
     <site-header></site-header>
 
     <main id="paginaMapaMain">
-
         <div class="forms-top-bar">
-            <h1>Buscador</h1>
+            <h1 data-i18n="map_searcher_title">Buscador</h1>
 
             <form id="form-busca">
                 <div class="input-group">
-                    <label for="cep">Digite o CEP do local:</label>
+                    <label for="cep" data-i18n="map_label_cep">Digite o CEP do local:</label>
                     <input type="text" id="cep" placeholder="00000000">
                 </div>
 
                 <div class="input-group">
-                    <label for="categoria-servico">Escolha o serviço para buscar:</label>
+                    <label for="categoria-servico" data-i18n="map_label_category">Escolha o serviço para buscar:</label>
                     <select id="categoria-servico">
-                        <option value="">O que você procura por perto?</option>
-                        <option value="academia">Academia</option>
-                        <option value="supermercado">Supermercado</option>
-                        <option value="posto">Posto de Combustível</option>
-                        <option value="hospital">Hospital</option>
-                        <option value="restaurante">Restaurante</option>
-                        <option value="farmacia">Farmácia</option>
-                        <option value="igreja">Igreja</option>
+                        <option value="" data-i18n="map_opt_placeholder">O que você procura por perto?</option>
+                        <option value="academia" data-i18n="map_opt_gym">Academia</option>
+                        <option value="supermercado" data-i18n="map_opt_market">Supermercado</option>
+                        <option value="posto" data-i18n="map_opt_gas">Posto de Combustível</option>
+                        <option value="hospital" data-i18n="map_opt_hospital">Hospital</option>
+                        <option value="restaurante" data-i18n="map_opt_restaurant">Restaurante</option>
+                        <option value="farmacia" data-i18n="map_opt_pharmacy">Farmácia</option>
+                        <option value="igreja" data-i18n="map_opt_church">Igreja</option>
                     </select>
                 </div>
 
                 <div class="input-group">
-                    <label for="raio">Digite o raio de onde os serviços podem estar do CEP:</label>
-                    <input type="text" id="raio" placeholder="Raio em Km">
+                    <label for="raio" data-i18n="map_label_radius">Digite o raio de onde os serviços podem estar do
+                        CEP:</label>
+                    <input type="text" id="raio" data-i18n="map_ph_radius" placeholder="Raio em Km">
                 </div>
 
-                <button type="submit" id="btn-buscar">Buscar</button>
+                <button type="submit" id="btn-buscar" data-i18n="map_btn_search">Buscar</button>
             </form>
         </div>
 
         <aside class="resultados-sidebar">
-            <h3>Resultados da pesquisa:</h3>
-
-            <div class="lista-locais">
-            </div>
-
-            <p class="ai-warning">O PlaceFinder não é humano, ele pode cometer erros!</p>
+            <h3 data-i18n="map_results_title">Resultados da pesquisa:</h3>
+            <div class="lista-locais"></div>
+            <p class="ai-warning" data-i18n="map_ai_warning">O PlaceFinder não é humano, ele pode cometer erros!</p>
         </aside>
 
         <div id="map"></div>
-
     </main>
 
     <site-footer></site-footer>
