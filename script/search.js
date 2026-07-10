@@ -42,7 +42,6 @@ export async function buscarServicosAoRedor(coordenadas, categoriaHtml, raioKm) 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
-                // Identificação essencial para evitar bloqueio CORS/Fetch em produção
                 'User-Agent': 'PlaceFinderAppCurso/1.0'
             },
             body: `data=${encodeURIComponent(query)}`

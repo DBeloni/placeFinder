@@ -17,13 +17,16 @@ class SiteHeader extends HTMLElement {
                     ${estaLogado ? `<li><a href="/pages/map.html" class="nav-link px-3" data-i18n="nav_map">Map</a></li>` : ''}
                 </ul>
                 <div class="d-flex gap-3 align-items-center bloco-botoes">
-                    <div class="lang-dropdown" id="langDropdown">
-                        <button class="lang-btn" id="langBtn">
-                            🌐 <span id="currentLangLabel">${idiomaInicial.toUpperCase()}</span> <span class="lang-arrow">▼</span>
+                    <div class="lang-dropdown">
+                        <button class="lang-btn">
+                            <img src="/assets/globe.svg" alt="Idioma" width="16" height="16">
+                            <span data-i18n="lang_text">EN</span>
+                            <span class="lang-arrow">▼</span>
                         </button>
+                        
                         <div class="lang-menu">
-                            <button class="lang-item" data-lang="en">EN</button>
                             <button class="lang-item" data-lang="pt">PT</button>
+                            <button class="lang-item" data-lang="en">EN</button>
                         </div>
                     </div>
                     ${estaLogado ? `

@@ -7,7 +7,6 @@
     <title>PlaceFinder</title>
 
     <link rel="stylesheet" href="/style/main.css">
-
     <link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
 
     <script type="module">
@@ -26,20 +25,31 @@
 
     <main class="login-page-clean">
         <form id="login-form">
-            <h1 class="auth-title">Sign In</h1>
-            <p class="auth-subtitle">Welcome back! Please enter your details.</p>
+            <h1 class="auth-title" data-i18n="login_title">Sign In</h1>
+            <p class="auth-subtitle" data-i18n="login_subtitle">Welcome back! Please enter your details.</p>
 
             <div class="input-group-custom">
-                <label for="email">E-mail</label>
-                <input type="email" id="email" placeholder="Enter your email" required>
+                <label for="email" data-i18n="label_email">E-mail</label>
+                <input type="email" id="email" data-i18n="placeholder_email" placeholder="Enter your email" required>
             </div>
 
             <div class="input-group-custom">
-                <label for="senha">Password</label>
-                <input type="password" id="senha" placeholder="Enter your password" required>
+                <label for="senha" data-i18n="label_password">Password</label>
+                <div class="campo-senha-container" style="position: relative; width: 100%;">
+                    <input type="password" id="senha" data-i18n="placeholder_password" placeholder="Enter your password"
+                        required style="width: 100%; padding-right: 40px;">
+                    <span id="alternar-senha" class="btn-olhinho"
+                        style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); cursor: pointer; user-select: none; color: #666; display: flex; align-items: center;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </span>
+                </div>
             </div>
 
-            <button type="submit" id="cdst">Sign In</button>
+            <button type="submit" id="cdst" data-i18n="nav_login">Sign In</button>
         </form>
     </main>
 
