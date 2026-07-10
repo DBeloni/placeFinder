@@ -18,8 +18,9 @@ class SiteHeader extends HTMLElement {
                 </ul>
                 <div class="d-flex gap-3 align-items-center bloco-botoes">
                     <div class="lang-dropdown" id="langDropdown">
-                        <button class="lang-btn" id="langBtn">
-                            🌐 <span id="currentLangLabel">${idiomaInicial.toUpperCase()}</span> <span class="lang-arrow">▼</span>
+                        <button class="btn-lang" style="display: flex; align-items: center; gap: 8px;">
+                            <img src="/assets/globe.svg" alt="Idioma" width="18" height="18" class="icone-globo">
+                            <span data-i18n="lang_text">EN</span> ▼
                         </button>
                         <div class="lang-menu">
                             <button class="lang-item" data-lang="en">EN</button>
