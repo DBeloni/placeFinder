@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (resultado.sucesso) {
                 localStorage.setItem("usuarioLogado", "true");
-                window.location.href = "map.html";
+                window.location.href = "/pages/map.html";
             } else {
                 mostrarNotificacao(getTexto(resultado.erroKey), "error");
                 if (btnSubmit) btnSubmit.disabled = false;

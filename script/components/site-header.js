@@ -6,32 +6,34 @@ class SiteHeader extends HTMLElement {
         const idiomaInicial = localStorage.getItem("idioma") || "en";
 
         this.innerHTML = `
-        <link rel="stylesheet" href="../style/css/components/header.css">
+        <link rel="stylesheet" href="/style/css/components/header.css">
         <header class="cabecalho-principal p-3 border-bottom">
             <div class="container-fluid px-4">
                 <div class="d-flex flex-wrap align-items-center justify-content-between">
                 <a href="/index.html" class="logo-site text-decoration-none">PlaceFinder</a>
                 <ul class="nav mx-auto mb-2 mb-md-0 lista-navegacao">
                     <li><a href="/index.html" class="nav-link px-3" data-i18n="nav_home">Home</a></li>
-                    <li><a href="about.html" class="nav-link px-3" data-i18n="nav_about">About</a></li>
-                    ${estaLogado ? `<li><a href="map.html" class="nav-link px-3" data-i18n="nav_map">Map</a></li>` : ''}
+                    <li><a href="/pages/about.html" class="nav-link px-3" data-i18n="nav_about">About</a></li>
+                    ${estaLogado ? `<li><a href="/pages/map.html" class="nav-link px-3" data-i18n="nav_map">Map</a></li>` : ''}
                 </ul>
                 <div class="d-flex gap-3 align-items-center bloco-botoes">
-                    <div class="lang-dropdown" id="langDropdown">
-                        <button class="btn-lang" style="display: flex; align-items: center; gap: 8px;">
-                            <img src="/assets/globe.svg" alt="Idioma" width="18" height="18" class="icone-globo">
-                            <span data-i18n="lang_text">EN</span> ▼
+                    <div class="lang-dropdown">
+                        <button class="lang-btn">
+                            <img src="/assets/globe.svg" alt="Idioma" width="16" height="16">
+                            <span data-i18n="lang_text">EN</span>
+                            <span class="lang-arrow">▼</span>
                         </button>
+                        
                         <div class="lang-menu">
-                            <button class="lang-item" data-lang="en">EN</button>
                             <button class="lang-item" data-lang="pt">PT</button>
+                            <button class="lang-item" data-lang="en">EN</button>
                         </div>
                     </div>
                     ${estaLogado ? `
                         <button id="btn-logout" class="btn btn-login" data-i18n="nav_logout">Sign Out</button>
                     ` : `
-                        <a href="login.html" class="btn btn-login" data-i18n="nav_login">Login</a>
-                        <a href="register.html" class="btn btn-signup" data-i18n="nav_register">Register</a>
+                        <a href="/pages/login.html" class="btn btn-login" data-i18n="nav_login">Login</a>
+                        <a href="/pages/register.html" class="btn btn-signup" data-i18n="nav_register">Register</a>
                     `}
                 </div>
                 </div>
@@ -67,7 +69,7 @@ class SiteHeader extends HTMLElement {
                 event.preventDefault();
                 localStorage.removeItem("usuarioLogado");
                 mostrarNotificacao(getTexto('logout_success'), 'success');
-                setTimeout(() => { window.location.href = "login.html"; }, 1000);
+                setTimeout(() => { window.location.href = "/pages/login.html"; }, 1000);
             });
         }
     }
