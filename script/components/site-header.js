@@ -17,10 +17,10 @@ class SiteHeader extends HTMLElement {
                     ${estaLogado ? `<li><a href="/pages/map.html" class="nav-link px-3" data-i18n="nav_map">Map</a></li>` : ''}
                 </ul>
                 <div class="d-flex gap-3 align-items-center bloco-botoes">
-                    <div class="lang-dropdown">
-                        <button class="lang-btn">
+                    <div id="langDropdown" class="lang-dropdown">
+                        <button id="langBtn" class="lang-btn">
                             <img src="/assets/globe.svg" alt="Idioma" width="16" height="16">
-                            <span data-i18n="lang_text">EN</span>
+                            <span id="currentLangLabel" data-i18n="lang_text">${idiomaInicial.toUpperCase()}</span>
                             <span class="lang-arrow">▼</span>
                         </button>
                         
@@ -46,19 +46,22 @@ class SiteHeader extends HTMLElement {
         const labelLang = this.querySelector('#currentLangLabel');
         const langItems = this.querySelectorAll('.lang-item');
 
-        btnLang.addEventListener('click', (event) => {
-            event.stopPropagation();
-            dropdown.classList.toggle('open');
-        });
+        // Proteção caso algum elemento falhe ao renderizar
+        if (btnLang && dropdown) {
+            btnLang.addEventListener('click', (event) => {
+                event.stopPropagation();
+                dropdown.classList.toggle('open');
+            });
 
-        document.addEventListener('click', () => dropdown.classList.remove('open'));
+            document.addEventListener('click', () => dropdown.classList.remove('open'));
+        }
 
         langItems.forEach(item => {
             item.addEventListener('click', () => {
                 const novoIdioma = item.getAttribute('data-lang');
                 localStorage.setItem('idioma', novoIdioma);
-                labelLang.textContent = novoIdioma.toUpperCase();
-                dropdown.classList.remove('open');
+                if (labelLang) labelLang.textContent = novoIdioma.toUpperCase();
+                if (dropdown) dropdown.classList.remove('open');
                 window.dispatchEvent(new CustomEvent('idiomaMudou', { detail: novoIdioma }));
             });
         });
