@@ -34,31 +34,42 @@ export async function buscarServicosAoRedor(coordenadas, categoriaHtml, raioKm) 
     const raioMetros = parseFloat(raioKm) * 1000;
     const { lat, lon } = coordenadas;
 
-    const query = `[out:json][timeout:25];node(around:${raioMetros},${lat},${lon})["amenity"="${amenity}"];out;`;
+    const query = `[out:json][timeout:15];node(around:${raioMetros},${lat},${lon})["amenity"="${amenity}"];out;`;
     
-    const url = `https://overpass-api.de/api/interpreter?data=${encodeURIComponent(query)}`;
+    const servidoresOverpass = [
+        'https://overpass-api.de/api/interpreter',
+        'https://overpass.kumi.systems/api/interpreter',
+        'https://overpass.nchc.org.tw/api/interpreter'
+    ];
 
-    try {
-        const resposta = await fetch(url);
+    let dados = null;
 
-        if (!resposta.ok) {
-            throw new Error("A API do mapa está indisponível ou sobrecarregada no momento.");
+    for (const servidor of servidoresOverpass) {
+        try {
+            const url = `${servidor}?data=${encodeURIComponent(query)}`;
+            const resposta = await fetch(url);
+
+            if (resposta.ok) {
+                dados = await resposta.json();
+                break;
+            }
+        } catch (e) {
+            console.warn(`Servidor ${servidor} indisponível ou bloqueado. Tentando o próximo...`);
         }
-
-        const dados = await resposta.json();
-
-        if (!dados.elements || dados.elements.length === 0) {
-            return [];
-        }
-
-        return dados.elements.map(local => ({
-            id: local.id,
-            lat: local.lat,
-            lon: local.lon,
-            nome: local.tags.name || "Estabelecimento sem nome informado"
-        }));
-
-    } catch (erro) {
-        throw new Error("Falha ao consultar os serviços: " + erro.message);
     }
+
+    if (!dados) {
+        throw new Error("Os servidores de mapa estão sobrecarregados no momento. Aguarde alguns segundos e tente novamente.");
+    }
+
+    if (!dados.elements || dados.elements.length === 0) {
+        return [];
+    }
+
+    return dados.elements.map(local => ({
+        id: local.id,
+        lat: local.lat,
+        lon: local.lon,
+        nome: local.tags.name || "Estabelecimento sem nome informado"
+    }));
 }
