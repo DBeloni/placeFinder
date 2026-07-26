@@ -16,7 +16,7 @@ export async function buscarCoordenadas(dadosEndereco) {
         }
         return { lat: parseFloat(dados[0].lat), lon: parseFloat(dados[0].lon), display_name: dados[0].display_name };
     } catch (erro) {
-        if(erro.message === "error_cep_not_found") throw erro;
+        if (erro.message === "error_cep_not_found") throw erro;
         throw new Error("error_nominatim_failed");
     }
 }

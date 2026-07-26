@@ -49,15 +49,12 @@ async function executarProcuraCompleta() {
         return;
     }
 
-    // Guardamos o texto original do botão antes de alterar
     const textoOriginalBotao = botaoBuscar.textContent;
 
     try {
-        // 🔒 Trava o botão e altera o texto para feedback visual
         botaoBuscar.disabled = true;
         botaoBuscar.textContent = "Buscando...";
 
-        // Limpa pesquisas anteriores do mapa
         camadaMarcadores.clearLayers();
 
         const dadosEndereco = await viaCep(cepBruto);
@@ -65,13 +62,11 @@ async function executarProcuraCompleta() {
         
         focarNoCep(map, coordenadas);
         
-        // Renderiza o marcador do usuário
         L.marker([coordenadas.lat, coordenadas.lon])
             .addTo(camadaMarcadores)
             .bindPopup("<b>Você está aqui!</b>")
             .openPopup();
 
-        // Busca nos múltiplos servidores espelho do Overpass
         const locaisEncontrados = await buscarServicosAoRedor(coordenadas, categoriaSelecionada, raioInformado);
         
         const pontoUsuario = L.latLng(coordenadas.lat, coordenadas.lon);
@@ -82,12 +77,10 @@ async function executarProcuraCompleta() {
             return { ...local, distancia };
         });
 
-        // Ordena por menor distância
         listaProcessada.sort((a, b) => a.distancia - b.distancia);
 
         renderizarResultados(listaProcessada);
 
-        // Adiciona os marcadores no mapa
         listaProcessada.forEach(local => {
             const textoDistancia = local.distancia > 1000 
                 ? `${(local.distancia / 1000).toFixed(1)} km` 
@@ -101,7 +94,6 @@ async function executarProcuraCompleta() {
     } catch (erro) {
         alert(erro.message);
     } finally {
-        // 🔓 Destrava o botão independentemente se deu sucesso ou erro
         botaoBuscar.disabled = false;
         botaoBuscar.textContent = textoOriginalBotao;
     }

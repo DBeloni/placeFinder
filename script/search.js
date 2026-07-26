@@ -39,7 +39,8 @@ export async function buscarServicosAoRedor(coordenadas, categoriaHtml, raioKm) 
     const servidoresOverpass = [
         'https://overpass-api.de/api/interpreter',
         'https://overpass.kumi.systems/api/interpreter',
-        'https://overpass.nchc.org.tw/api/interpreter'
+        'https://maps.mail.ru/osm/tools/overpass/api/interpreter',
+        'https://overpass.private.coffee/api/interpreter'
     ];
 
     let dados = null;
@@ -54,7 +55,7 @@ export async function buscarServicosAoRedor(coordenadas, categoriaHtml, raioKm) 
                 break;
             }
         } catch (e) {
-            console.warn(`Servidor ${servidor} indisponível ou bloqueado. Tentando o próximo...`);
+            console.warn(`Servidor ${servidor} indisponível. Tentando próximo...`);
         }
     }
 
