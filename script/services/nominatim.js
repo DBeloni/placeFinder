@@ -4,11 +4,13 @@ export async function buscarCoordenadas(dadosEndereco) {
     }
     const enderecoCompleto = `${dadosEndereco.logradouro}, ${dadosEndereco.bairro}, ${dadosEndereco.localidade} - ${dadosEndereco.uf}`;
     const query = encodeURIComponent(enderecoCompleto);
-    const url = `https://nominatim.openstreetmap.org/search?q=${query}&format=json&limit=1`;
+    
+    const url = `https://nominatim.openstreetmap.org/search?q=${query}&format=json&limit=1&email=contato@placefinder.com`;
 
     try {
-        const response = await fetch(url, { headers: { 'User-Agent': 'PlaceFinderAppCurso/1.0' } });
+        const response = await fetch(url);
         const dados = await response.json();
+        
         if (!dados || dados.length === 0) {
             throw new Error("error_cep_not_found");
         }
@@ -17,4 +19,4 @@ export async function buscarCoordenadas(dadosEndereco) {
         if(erro.message === "error_cep_not_found") throw erro;
         throw new Error("error_nominatim_failed");
     }
-}   
+}

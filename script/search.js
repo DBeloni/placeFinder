@@ -6,7 +6,6 @@ export function focarNoCep(mapa, coordenadas) {
     try {
         const { lat, lon } = coordenadas;
         mapa.setView([lat, lon], 15);
-        L.marker([lat, lon]).addTo(mapa);
     } catch (erro) {
         throw new Error("Falha ao focar a busca no mapa: " + erro.message);
     }
@@ -36,25 +35,17 @@ export async function buscarServicosAoRedor(coordenadas, categoriaHtml, raioKm) 
     const { lat, lon } = coordenadas;
 
     const query = `[out:json][timeout:25];node(around:${raioMetros},${lat},${lon})["amenity"="${amenity}"];out;`;
+    
+    const url = `https://overpass-api.de/api/interpreter?data=${encodeURIComponent(query)}`;
 
     try {
-        const resposta = await fetch('https://overpass-api.de/api/interpreter', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'User-Agent': 'PlaceFinderAppCurso/1.0'
-            },
-            body: `data=${encodeURIComponent(query)}`
-        });
+        const resposta = await fetch(url);
 
-        const textoResposta = await resposta.text();
-
-        let dados;
-        try {
-            dados = JSON.parse(textoResposta);
-        } catch (e) {
-            throw new Error("A API do mapa está sobrecarregada no momento. Tente novamente em alguns segundos.");
+        if (!resposta.ok) {
+            throw new Error("A API do mapa está indisponível ou sobrecarregada no momento.");
         }
+
+        const dados = await resposta.json();
 
         if (!dados.elements || dados.elements.length === 0) {
             return [];
